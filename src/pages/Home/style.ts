@@ -8,7 +8,7 @@ margin: 0 auto;
 
 `
 
-export const SloganSection = styled.div`
+export const SloganSection = styled.section`
 
 display: flex;
 align-items: center;
@@ -60,6 +60,45 @@ div {
                 }
             }
         }
+    }
+}
+`
+
+export const CoffeeListSection = styled.div`
+
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 2rem;
+justify-content: center;
+
+`
+
+export const CoffeeItem = styled.article`
+
+display: flex;
+flex-direction: column;
+align-items: center;
+border-radius: 4px 20px 4px 20px;
+background-color: ${props => props.theme['base-50']};
+
+strong {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color:  ${props => props.theme['base-600']}
+}
+p {
+    font-size: 0.875rem;
+    color:  ${props => props.theme['base-400']};
+}
+div {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    span {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color:  ${props => props.theme['base-500']}
     }
 }
 `

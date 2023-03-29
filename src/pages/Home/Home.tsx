@@ -1,8 +1,44 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
 import copo from '../../assets/copo.svg'
-import { MainContainer, SloganSection } from './style';
+import { CoffeeItem, CoffeeListSection, MainContainer, SloganSection } from './style';
 
 export function Home() {
+
+    const coffeeArray = [
+        {
+            id: new Date().getTime(),
+            img_item: '',
+            type: ['tradicional', 'com leite'],
+            title: 'Café normal',
+            description: 'Café desnatado sem açúcar',
+            price: 9.99,
+        },
+        {
+            id: new Date().getTime(),
+            img_item: '',
+            type: ['tradicional', 'com leite'],
+            title: 'Café normal',
+            description: 'Café desnatado sem açúcar',
+            price: 9.99,
+        },
+        {
+            id: new Date().getTime(),
+            img_item: '',
+            type: ['tradicional', 'com leite'],
+            title: 'Café normal',
+            description: 'Café desnatado sem açúcar',
+            price: 9.99,
+        },
+        {
+            id: new Date().getTime(),
+            img_item: '',
+            type: ['tradicional', 'com leite'],
+            title: 'Café normal',
+            description: 'Café desnatado sem açúcar',
+            price: 9.99,
+        },
+    ]
+
     return (
         <MainContainer>
             <SloganSection>
@@ -18,6 +54,24 @@ export function Home() {
                 </div>
                 <img src={copo} alt="Imagem de um copo de café" />
             </SloganSection>
+            <CoffeeListSection>
+                {
+                    coffeeArray.map(coffee => {
+                        return(
+                            <CoffeeItem key={coffee.id}>
+                                <img src={coffee.img_item} alt="Imagem de café" />
+                                <strong> {coffee.title} </strong>
+                                <p> {coffee.description} </p>
+                                <div>
+                                    <span> {coffee.price} </span>
+                                    <button type="button"> 1 </button>
+                                    <button type="submit"><ShoppingCart weight='fill'/> </button>
+                                </div>
+                            </CoffeeItem>
+                        );
+                    })
+                }
+            </CoffeeListSection>
         </MainContainer>
     );
 }
