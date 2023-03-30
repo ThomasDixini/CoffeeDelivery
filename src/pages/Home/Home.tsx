@@ -1,5 +1,6 @@
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
+import { Coffee, Minus, Package, Plus, ShoppingCart, Timer } from 'phosphor-react';
 import copo from '../../assets/copo.svg'
+import expresso from '../../assets/expresso.svg'
 import { CoffeeItem, CoffeeListSection, MainContainer, SloganSection } from './style';
 
 export function Home() {
@@ -7,7 +8,15 @@ export function Home() {
     const coffeeArray = [
         {
             id: new Date().getTime(),
-            img_item: '',
+            img_item: expresso,
+            type: ['tradicional', 'com leite'],
+            title: 'Café normal',
+            description: 'Café desnatado sem açúcar, a especialidade da casa o melhor café do mundo !!!',
+            price: 9.99,
+        },
+        {
+            id: new Date().getTime(),
+            img_item: expresso,
             type: ['tradicional', 'com leite'],
             title: 'Café normal',
             description: 'Café desnatado sem açúcar',
@@ -15,7 +24,7 @@ export function Home() {
         },
         {
             id: new Date().getTime(),
-            img_item: '',
+            img_item: expresso,
             type: ['tradicional', 'com leite'],
             title: 'Café normal',
             description: 'Café desnatado sem açúcar',
@@ -23,15 +32,7 @@ export function Home() {
         },
         {
             id: new Date().getTime(),
-            img_item: '',
-            type: ['tradicional', 'com leite'],
-            title: 'Café normal',
-            description: 'Café desnatado sem açúcar',
-            price: 9.99,
-        },
-        {
-            id: new Date().getTime(),
-            img_item: '',
+            img_item: expresso,
             type: ['tradicional', 'com leite'],
             title: 'Café normal',
             description: 'Café desnatado sem açúcar',
@@ -64,8 +65,8 @@ export function Home() {
                                 <p> {coffee.description} </p>
                                 <div>
                                     <span> {coffee.price} </span>
-                                    <button type="button"> 1 </button>
-                                    <button type="submit"><ShoppingCart weight='fill'/> </button>
+                                    <button type="button"> <Minus /> 1 <Plus /> </button>
+                                    <button type="submit"><ShoppingCart weight='fill' size={24}/> </button>
                                 </div>
                             </CoffeeItem>
                         );

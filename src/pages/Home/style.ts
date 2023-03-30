@@ -80,6 +80,11 @@ flex-direction: column;
 align-items: center;
 border-radius: 4px 20px 4px 20px;
 background-color: ${props => props.theme['base-50']};
+padding: 1rem 2rem;
+
+img {
+    margin-top: -32px;
+}
 
 strong {
     font-size: 1.3rem;
@@ -89,16 +94,45 @@ strong {
 p {
     font-size: 0.875rem;
     color:  ${props => props.theme['base-400']};
+    margin: 1rem 0 2rem;
+    text-align: center;
 }
 div {
-    margin-top: 1rem;
+    margin-top: auto;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    gap: 0.5rem;
+    
     span {
         font-weight: bold;
         font-size: 1.5rem;
-        color:  ${props => props.theme['base-500']}
+        color:  ${props => props.theme['base-500']};
+        
+        &::before {
+            content: 'R$';
+            font-size: 14px;
+            font-weight: normal;
+        }
+    }
+    button {
+        padding: 0.5rem;
+        border-radius: 4px;
+        border: 0;
+        background-color: ${props => props.theme['base-200']};
+        height: 2.5rem;
+        &:nth-child(2) {
+            margin-left: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 4rem;
+            svg {
+                color: ${props => props.theme['purple']};
+                &:hover {
+                    color: ${props => props.theme['purple-dark']}
+                }
+            }
+        }
     }
 }
 `
