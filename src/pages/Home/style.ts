@@ -66,10 +66,20 @@ div {
 
 export const CoffeeListSection = styled.div`
 
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 2rem;
-justify-content: center;
+margin: 2rem 0;
+
+h1 {
+    font-family: "Baloo 2" ,sans-serif;
+    font-weight: 800;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
 
 `
 
@@ -118,21 +128,51 @@ div {
         padding: 0.5rem;
         border-radius: 4px;
         border: 0;
-        background-color: ${props => props.theme['base-200']};
         height: 2.5rem;
-        &:nth-child(2) {
-            margin-left: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 4rem;
-            svg {
-                color: ${props => props.theme['purple']};
-                &:hover {
-                    color: ${props => props.theme['purple-dark']}
-                }
+    }
+    button[type='button'] {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-left: auto;
+        width: 4rem;
+
+        background-color: ${props => props.theme['base-200']};
+        svg {
+            color: ${props => props.theme['purple']};
+            &:hover {
+                color: ${props => props.theme['purple-dark']}
             }
         }
     }
+    button[type='submit']{
+        background-color: ${props => props.theme['purple-dark']};
+        color: ${props => props.theme['white']};
+        &:hover {
+            background-color: ${props => props.theme['purple']};
+        }
+    }
+}
+`
+
+export const Subtitle = styled.header`
+
+width: 100%;
+margin-top: 0.875rem;
+
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.25rem;
+
+font-size: 70.5%;
+
+b {
+    background-color: ${props => props.theme['yellow-light']};
+    color: ${props => props.theme['yellow-dark']};
+
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
 }
 `
