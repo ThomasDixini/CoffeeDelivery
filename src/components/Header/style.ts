@@ -30,6 +30,13 @@ export const HeaderContainer = styled.header`
       display: flex;
       align-items: center;
       gap: 1rem;
+
+      transition: all 0.15s;
+
+      &[href="/checkout"]:hover {
+        background-color: ${props => props.theme['yellow']};
+        color: ${(props) => props.theme['white']};
+      }
     }
   }
 `
