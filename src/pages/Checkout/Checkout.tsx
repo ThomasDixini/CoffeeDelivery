@@ -1,13 +1,16 @@
-import { AdressContainer, CartContainer, CheckoutMain } from "./styles";
+import { AdressContainer, AdressSelection, CartContainer, CheckoutMain, CreditCardSelection } from "./styles";
+import { MapPinLine } from 'phosphor-react';
 
 export function Checkout() {
     return (
         <CheckoutMain>
             <AdressContainer>
                 <h1> Complete seu pedido </h1>
-                <div>
+                <AdressSelection>
                     <header>
-
+                        <MapPinLine />
+                        <span> Endereço de Entrega </span>
+                        <p> Informe o endereço onde deseja receber seu pedido </p>
                     </header>
                     <input type="text"/>
                     <input type="text"/>
@@ -16,15 +19,17 @@ export function Checkout() {
                     <input type="text"/>
                     <input type="text"/>
                     <input type="text"/>
-                </div>
-                <div>
+                </AdressSelection>
+                <CreditCardSelection>
                     <header>
-
+                        <MapPinLine />
+                        <span> Pagamento </span>
+                        <p> O pagamento é feito na entrega. Escolha a forma que deseja pagar </p>
                     </header>
-                    <button type="button"> a </button>
-                    <button type="button"> a </button>
-                    <button type="button"> a </button>
-                </div>
+                    <button type="button"> Cartão de crédito </button>
+                    <button type="button"> Cartão de Débito </button>
+                    <button type="button"> Dinheiro </button>
+                </CreditCardSelection>
             </AdressContainer>
             <CartContainer>
                 <h1> Cafés Selecionados </h1>
