@@ -30,11 +30,32 @@ export const HeaderContainer = styled.header`
       display: flex;
       align-items: center;
       gap: 1rem;
+      position: relative;
 
       transition: all 0.15s;
 
       &[href="/checkout"]:hover {
         background-color: ${props => props.theme['yellow']};
+        color: ${(props) => props.theme['white']};
+      }
+
+      &::after {
+        content: "10";
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -0.5rem;
+        right: -0.5rem;
+        padding: 1px;
+        border-radius: 50%;
+        align-items: center;
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: ${props => props.theme['yellow-dark']};
         color: ${(props) => props.theme['white']};
       }
     }
