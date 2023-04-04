@@ -41,4 +41,8 @@ button {
     opacity: 0.6;
 }
 
+:focus {
+    outline: 2px solid ${props => props.theme['yellow']};
+}
+
 `

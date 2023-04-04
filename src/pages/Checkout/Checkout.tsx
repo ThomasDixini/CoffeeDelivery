@@ -8,17 +8,21 @@ export function Checkout() {
                 <h1> Complete seu pedido </h1>
                 <AdressSelection>
                     <header>
-                        <MapPinLine />
-                        <span> Endereço de Entrega </span>
-                        <p> Informe o endereço onde deseja receber seu pedido </p>
+                        <MapPinLine size={24}/>
+                        <div>
+                            <span> Endereço de Entrega </span>
+                            <p> Informe o endereço onde deseja receber seu pedido </p>
+                        </div>
                     </header>
-                    <input type="text"/>
-                    <input type="text"/>
-                    <input type="number"/>
-                    <input type="text"/>
-                    <input type="text"/>
-                    <input type="text"/>
-                    <input type="text"/>
+                    <div>
+                        <input type="text" name="cep" id="cep" placeholder="CEP"/>
+                        <input type="text" name="rua" id="rua" placeholder="RUA"/>
+                        <input type="number" name="numero" id="numero" placeholder="NUMERO"/>
+                        <input type="text" name="complemento" id="complemento" placeholder="COMPLEMENTO"/>
+                        <input type="text" name="bairro" id="bairro" placeholder="BAIRRO"/>
+                        <input type="text" name="cidade" id="cidade" placeholder="CIDADE"/>
+                        <input type="text" name="uf" id="uf" placeholder="UF"/>
+                    </div>
                 </AdressSelection>
                 <CreditCardSelection>
                     <header>
