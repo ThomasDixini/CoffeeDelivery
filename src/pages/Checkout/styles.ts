@@ -91,6 +91,45 @@ export const AdressSelection = styled.div`
 export const CreditCardSelection = styled.div`
     padding: 2.5rem;
     background-color: ${props => props.theme['base-50']};
+    svg {
+        color: ${props => props.theme['purple']};
+    }
+    header {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        
+        div {
+            display: inline;
+            p {
+                font-size: 0.875rem;
+            }
+        }
+    }
+    .creditcard-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+        button {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border: 0;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: ${props => props.theme['base-500']};
+            background-color: ${props => props.theme['base-200']};
+            transition: all 0.2s;
+            &:hover {
+                filter: brightness(0.8);
+            }
+        }
+    }
 `
 export const CartContainer = styled.section`
     display: flex;
