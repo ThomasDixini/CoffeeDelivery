@@ -157,7 +157,7 @@ export const Button = styled.button<ButtonProps>`
       ? props.theme['purple-light']
       : props.theme['base-200']};
   border: ${(props) =>
-    props.buttonSelected ? `1px solid ${props.theme.purple}` : '0'};
+    props.buttonSelected ? `1px solid ${props.theme.purple}` : '1px solid transparent'};
   transition: all 0.2s;
   &:hover {
     filter: brightness(0.8);
