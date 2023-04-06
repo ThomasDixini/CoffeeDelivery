@@ -6,6 +6,31 @@ export const CheckoutMain = styled.main`
   display: flex;
   gap: 2rem;
   margin: 0 auto;
+
+  @media (max-width: 700px){
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+
+    section {
+        div {
+          div {
+            grid-template-columns: 1fr;
+            grid-template-areas: 'cep'
+                'rua'
+                'numero'
+                'complemento'
+                'bairro' 
+                'cidade' 
+                'uf';
+          }  
+          .creditcard-buttons {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+    }
+  }
 `
 export const AdressContainer = styled.section`
   display: flex;
@@ -206,3 +231,5 @@ export const CartContainer = styled.section`
     }
   }
 `
+
+
