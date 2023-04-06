@@ -113,24 +113,31 @@ export const CreditCardSelection = styled.div`
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
         margin-top: 2rem;
-        button {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem;
-            border: 0;
-            border-radius: 4px;
-            font-size: 1rem;
-            color: ${props => props.theme['base-500']};
-            background-color: ${props => props.theme['base-200']};
-            transition: all 0.2s;
-            &:hover {
-                filter: brightness(0.8);
-            }
-        }
     }
 `
+interface ButtonProps {
+    buttonSelected: boolean;
+}
+
+export const Button = styled.button<ButtonProps>`
+
+display: flex;
+justify-content: flex-start;
+align-items: center;
+gap: 0.5rem;
+padding: 1rem;
+border: 0;
+border-radius: 4px;
+font-size: 1rem;
+color: ${props => props.theme['base-500']};
+background-color: ${props => props.buttonSelected ? props.theme['purple-light'] : props.theme['base-200']};
+border: ${props => props.buttonSelected ? `1px solid ${props.theme['purple']}` : '0'};
+transition: all 0.2s;
+&:hover {
+    filter: brightness(0.8);
+}
+`
+
 export const CartContainer = styled.section`
     display: flex;
     flex-direction: column;

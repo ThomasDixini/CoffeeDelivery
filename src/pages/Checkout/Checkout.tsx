@@ -1,7 +1,15 @@
-import { AdressContainer, AdressSelection, CartContainer, CheckoutMain, CreditCardSelection } from "./styles";
+import { AdressContainer, AdressSelection, Button, CartContainer, CheckoutMain, CreditCardSelection } from "./styles";
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from 'phosphor-react';
+import { useState } from "react";
 
 export function Checkout() {
+
+    const [ cardButtonType, setCardButtonType ] = useState('');
+
+    function handleSelectButton(type: string) {
+        setCardButtonType(type)
+    }
+
     return (
         <CheckoutMain>
             <AdressContainer>
@@ -33,9 +41,9 @@ export function Checkout() {
                         </div>
                     </header>
                     <div className="creditcard-buttons">
-                        <button type="button"> <CreditCard /> Cartão de crédito </button>
-                        <button type="button"> <Bank /> Cartão de Débito </button>
-                        <button type="button"> <Money /> Dinheiro </button>
+                        <Button type="button" buttonSelected={cardButtonType == 'creditCard'} onClick={() => handleSelectButton('creditCard')}> <CreditCard /> Cartão de crédito </Button>
+                        <Button type="button" buttonSelected={cardButtonType == 'debitCard'} onClick={() => handleSelectButton('debitCard')}> <Bank /> Cartão de Débito </Button>
+                        <Button type="button" buttonSelected={cardButtonType == 'money'} onClick={() => handleSelectButton('money')}> <Money /> Dinheiro </Button>
                     </div>
                 </CreditCardSelection>
             </AdressContainer>
