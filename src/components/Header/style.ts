@@ -34,13 +34,13 @@ export const HeaderContainer = styled.header`
 
       transition: all 0.15s;
 
-      &[href="/checkout"]:hover {
-        background-color: ${props => props.theme['yellow']};
-        color: ${(props) => props.theme['white']};
+      &[href='/checkout']:hover {
+        background-color: ${(props) => props.theme.yellow};
+        color: ${(props) => props.theme.white};
       }
 
       &::after {
-        content: "10";
+        content: '10';
         width: 20px;
         height: 20px;
         display: flex;
@@ -55,8 +55,8 @@ export const HeaderContainer = styled.header`
         font-size: 0.75rem;
         font-weight: bold;
         text-decoration: none;
-        background-color: ${props => props.theme['yellow-dark']};
-        color: ${(props) => props.theme['white']};
+        background-color: ${(props) => props.theme['yellow-dark']};
+        color: ${(props) => props.theme.white};
       }
     }
   }

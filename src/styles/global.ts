@@ -42,7 +42,7 @@ button {
 }
 
 :focus {
-    outline: 2px solid ${props => props.theme['yellow']};
+    outline: 2px solid ${(props) => props.theme.yellow};
 }
 
 `
