@@ -23,7 +23,7 @@ export function Checkout() {
   const [cardButtonType, setCardButtonType] = useState('')
 
   function handleSelectButton(type: string) {
-    setCardButtonType(type)
+    cardButtonType !== '' ? setCardButtonType('') : setCardButtonType(type)
   }
 
   return (
