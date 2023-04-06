@@ -143,9 +143,65 @@ export const CartContainer = styled.section`
     flex-direction: column;
     max-width: 450px;
     width: 100%;
+    margin-top: 1rem;
     border-radius: 4px 30px 4px 30px;
 
-    div {
+    .checkoutContainer {
         background-color: ${props => props.theme['base-50']};
+        padding: 2.5rem;
+        border-radius: 4px 30px 4px 30px;
+        form {
+            display: flex;
+            flex-direction: column;
+            article {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                padding-bottom: 2rem;
+                gap: 1rem;
+                margin: 1rem 0;
+                border-bottom: 1px solid ${props => props.theme['base-200']};
+                
+                img {
+                   width: 64px; 
+                   height: 64px;
+                }
+                div {
+                    .item-buttons {
+                        display: flex;
+                        gap: 0.5rem;
+                        margin-top: 1rem;
+                        button {
+                            background-color: ${props => props.theme['base-200']};
+                            border: 0;
+                            border-radius: 4px;
+                            padding: 0.5rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+
+                            &:last-child:hover {
+                                filter: brightness(0.8);
+                            }
+                            svg {
+                                color: ${props => props.theme['purple']};
+                                &:hover {
+                                    color: ${props => props.theme['purple-dark']};
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            button[type="submit"] {
+                padding: 1rem;
+                margin-top: 1rem;
+                border: 0;
+                border-radius: 8px;
+                background-color: ${props => props.theme['yellow']};
+                color: white;
+                font-size: 500;
+            }
+        }
     }
 `

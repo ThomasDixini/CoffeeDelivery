@@ -1,6 +1,7 @@
 import { AdressContainer, AdressSelection, Button, CartContainer, CheckoutMain, CreditCardSelection } from "./styles";
-import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from 'phosphor-react';
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Minus, Money, Plus, Trash } from 'phosphor-react';
 import { useState } from "react";
+import expresso from '../../assets/expresso.svg'
 
 export function Checkout() {
 
@@ -49,14 +50,35 @@ export function Checkout() {
             </AdressContainer>
             <CartContainer>
                 <h1> Cafés Selecionados </h1>
-                <div>
-                    <article>
-
-                    </article>
-                    <span></span>
-                    <span></span>
-                    <strong></strong>
-                    <button type="submit"></button>
+                <div className="checkoutContainer">
+                    <form action="">
+                        <article>
+                            <img src={expresso} alt="" />
+                            <div>
+                                <p> Expresso Tradicional </p>
+                                <div className="item-buttons">
+                                    <button type="button"> <Minus size={16}/> 1 <Plus size={16}/> </button>
+                                    <button type="button"> <Trash size={16}/> REMOVER </button>
+                                </div>
+                            </div>
+                            <strong> R$ 9,90</strong>
+                        </article>
+                        <article>
+                            <img src={expresso} alt="" />
+                            <div>
+                                <p> Expresso Tradicional </p>
+                                <div className="item-buttons">
+                                    <button type="button"> <Minus size={16}/> 1 <Plus size={16}/> </button>
+                                    <button type="button"> <Trash size={16}/> REMOVER </button>
+                                </div>
+                            </div>
+                            <strong> R$ 9,90</strong>
+                        </article>
+                        <span> Total de itens </span>
+                        <span> Entrega </span>
+                        <strong> Total </strong>
+                        <button type="submit"> CONFIRMAR PEDIDO </button>
+                    </form>
                 </div>
             </CartContainer>
         </CheckoutMain>
