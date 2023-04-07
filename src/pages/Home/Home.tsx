@@ -190,6 +190,18 @@ export function Home() {
       }
     })  
   }
+  function handleDecrementItem(id: number) {
+    coffeeList.map(coffee => {
+      if(coffee.id === id) {
+        if(quantityItem > 0) {
+          setQuantityItem(coffee.quantity -= 1)
+        }
+        return {...coffee, quantity: quantityItem}
+      } else {
+        return coffee
+      }
+    })  
+  }
 
   return (
     <MainContainer>
@@ -247,9 +259,9 @@ export function Home() {
                 <p> {coffee.description} </p>
                 <div>
                   <span> {coffee.price} </span>
-                  <button type="button" onClick={() => handleIncrementItem(coffee.id)}>
+                  <button type="button">
                     {' '}
-                    <Minus /> {coffee.quantity} <Plus />{' '}
+                    <Minus onClick={() => handleDecrementItem(coffee.id)}/> {coffee.quantity} <Plus onClick={() => handleIncrementItem(coffee.id)} />{' '}
                   </button>
                   <button type="submit">
                     <ShoppingCart weight="fill" size={24} />{' '}
