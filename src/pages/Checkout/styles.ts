@@ -219,6 +219,22 @@ export const CartContainer = styled.section`
           }
         }
       }
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &::after {
+          content: '33,50';
+        }
+      }
+      strong:not(article > strong) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &::after {
+          content: '33,50';
+        }
+      }
       button[type='submit'] {
         padding: 1rem;
         margin-top: 1rem;
