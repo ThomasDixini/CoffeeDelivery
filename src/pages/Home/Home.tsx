@@ -30,6 +30,7 @@ import Cubano from '../../assets/Cubano.svg'
 import Havaiano from '../../assets/Havaiano.svg'
 import Árabe from '../../assets/Árabe.svg'
 import Irlandês from '../../assets/Irlandês.svg'
+import { useEffect, useState } from 'react'
 
 interface CoffeeType {
   id: number
@@ -37,129 +38,158 @@ interface CoffeeType {
   type: string[]
   title: string
   description: string
+  quantity: number
   price: number
 }
 
 export function Home() {
-  const coffeeArray: CoffeeType[] = [
+  const [ coffeeList, setCoffeeList ] = useState([
     {
-      id: new Date().getTime(),
+      id: 1,
       img_item: expresso,
       type: ['TRADICIONAL'],
       title: 'Expresso Tradicional',
       description: 'O tradicional café feito com água quente e grãos moídos',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 2,
       img_item: Americano,
       type: ['TRADICIONAL'],
       title: 'Expresso Americano',
       description: 'Expresso diluído, menos intenso que o tradicional',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 3,
       img_item: Cremoso,
       type: ['TRADICIONAL'],
       title: 'Expresso Cremoso',
       description: 'Café expresso tradicional com espuma cremosa',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 4,
       img_item: Gelado,
       type: ['TRADICIONAL', 'GELADO'],
       title: 'Expresso Gelado',
       description: 'Bebida preparada com café expresso e cubos de gelo',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 5,
       img_item: CaféComLeite,
       type: ['TRADICIONAL', 'COM LEITE'],
       title: 'Café com leite',
       description: 'Meio a meio de expresso tradicional com leite vaporizado',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 6,
       img_item: Latte,
       type: ['TRADICIONAL', 'COM LEITE'],
       title: 'Latte',
       description:
         'Uma dose de café expresso com o dobro de leite e espuma cremosa',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 7,
       img_item: Capuccino,
       type: ['TRADICIONAL', 'COM LEITE'],
       title: 'Capuccino',
       description:
         'Bebida com canela feita de doses iguais de café, leite e espuma',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 8,
       img_item: Macchiato,
       type: ['TRADICIONAL', 'COM LEITE'],
       title: 'Macchiato',
       description:
         'Café expresso misturado com um pouco de leite quente e espuma',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 9,
       img_item: Mocaccino,
       type: ['TRADICIONAL', 'COM LEITE'],
       title: 'Mocaccino',
       description: 'Café expresso com calda de chocolate, pouco leite e espuma',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 10,
       img_item: ChocolateQuente,
       type: ['ESPECIAL', 'COM LEITE'],
       title: 'Chocolate Quente',
       description:
         'Bebida feita com chocolate dissolvido no leite quente e café',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 11,
       img_item: Cubano,
       type: ['ESPECIAL', 'ALCOÓLICO', 'GELADO'],
       title: 'Cubano',
       description:
         'Drink gelado de café expresso com rum, creme de leite e hortelã',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 12,
       img_item: Havaiano,
       type: ['ESPECIAL'],
       title: 'Havaiano',
       description: 'Bebida adocicada preparada com café e leite de coco',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 13,
       img_item: Árabe,
       type: ['ESPECIAL'],
       title: 'Árabe',
       description: 'Bebida preparada com grãos de café árabe e especiarias',
+      quantity: 0,
       price: 9.99,
     },
     {
-      id: new Date().getTime(),
+      id: 14,
       img_item: Irlandês,
       type: ['ESPECIAL', 'ALCOÓLICO'],
       title: 'Irlandês',
       description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
+      quantity: 0,
       price: 9.99,
-    },
-  ]
+    }
+  ])
+
+  const [totalItensSelectedForBuy, setTotalItensSelectedForBuy] = useState<CoffeeType[]>([])
+  const [quantityItem, setQuantityItem] = useState(0)
+
+  function handleIncrementItem(id: number) {
+    coffeeList.map(coffee => {
+      if(coffee.id === id) {
+        setQuantityItem(coffee.quantity += 1)
+        return {...coffee, quantity: quantityItem}
+      } else {
+        return coffee
+      }
+    })  
+  }
 
   return (
     <MainContainer>
@@ -203,23 +233,23 @@ export function Home() {
       <CoffeeListSection>
         <h1> Nossos cafés </h1>
         <form action="">
-          {coffeeArray.map((coffee) => {
+          {coffeeList.map((coffee) => {
             return (
               <CoffeeItem key={coffee.id}>
                 <img src={coffee.img_item} alt="Imagem de café" />
                 <strong> {coffee.title} </strong>
                 <Subtitle>
                   {coffee.type.map((item) => {
-                    return <b key={item}> {item} </b>
+                    return <b key={Math.random()}> {item} </b>
                   })}
                 </Subtitle>
 
                 <p> {coffee.description} </p>
                 <div>
                   <span> {coffee.price} </span>
-                  <button type="button">
+                  <button type="button" onClick={() => handleIncrementItem(coffee.id)}>
                     {' '}
-                    <Minus /> 1 <Plus />{' '}
+                    <Minus /> {coffee.quantity} <Plus />{' '}
                   </button>
                   <button type="submit">
                     <ShoppingCart weight="fill" size={24} />{' '}
