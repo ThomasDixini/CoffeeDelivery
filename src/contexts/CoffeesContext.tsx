@@ -31,6 +31,7 @@ interface CoffeesContextProviderProps{
 interface CoffeesContextData {
     coffeeList: CoffeeType[];
     totalItensSelectedForBuy: CoffeeType[];
+    sumState: number;
     addItemOnCart: (item: CoffeeType) => void;
 }
 
@@ -170,20 +171,29 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
           price: 9.99,
         }
       ])
-    
     const [totalItensSelectedForBuy, setTotalItensSelectedForBuy] = useState<CoffeeType[]>([])
+    const [ sumState, setSumState ] = useState(0);
 
-      function addItemOnCart(item: CoffeeType) {
-        const itemAlreadyExists = totalItensSelectedForBuy.find(itemSelected => itemSelected.id == item.id)
+
+    function sumOfItemsOnCart() {
+        const sumOfTotalItensInCart = totalItensSelectedForBuy.reduce(( finalValue, currentElement ) => {
+            return finalValue += currentElement.quantity
+        }, 0)
+        setSumState(state => state = sumOfTotalItensInCart)
+    }
+
+    function addItemOnCart(item: CoffeeType) {
+    const itemAlreadyExists = totalItensSelectedForBuy.find(itemSelected => itemSelected.id == item.id)
         if(itemAlreadyExists) {
-            return
+            return sumOfItemsOnCart();
         } else {
             setTotalItensSelectedForBuy(state => [...state, item])
+            setSumState(state => state += 1)
         }
-      }
+    }
 
     return(
-        <CoffeesContext.Provider value={{coffeeList,totalItensSelectedForBuy,addItemOnCart}}>
+        <CoffeesContext.Provider value={{coffeeList,totalItensSelectedForBuy,sumState,addItemOnCart}}>
             {children}
         </CoffeesContext.Provider>
     );

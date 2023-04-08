@@ -7,14 +7,11 @@ import { CoffeeType, CoffeesContext } from '../../contexts/CoffeesContext'
 
 export function Header() {
 
-  const { totalItensSelectedForBuy } = useContext(CoffeesContext);
-
-  const sumOfTotalItensInCart = totalItensSelectedForBuy.reduce(( finalValue, currentElement ) => {
-    return finalValue += currentElement.quantity
-  }, 0)
+  const { sumState } = useContext(CoffeesContext);
+  
   
   return (
-    <HeaderContainer sumOfTotalItensInCart={sumOfTotalItensInCart}>
+    <HeaderContainer sumOfTotalItensInCart={sumState}>
       <Link to="/">
         <img src={coffeeLogo} alt="Logo do site" />
       </Link>
