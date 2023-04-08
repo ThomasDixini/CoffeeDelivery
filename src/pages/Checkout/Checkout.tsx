@@ -16,11 +16,12 @@ import {
   Plus,
   Trash,
 } from 'phosphor-react'
-import { useState } from 'react'
-import expresso from '../../assets/expresso.svg'
+import { useContext, useState } from 'react'
+import { CoffeesContext } from '../../contexts/CoffeesContext'
 
 export function Checkout() {
   const [cardButtonType, setCardButtonType] = useState('')
+  const { totalItensSelectedForBuy } = useContext(CoffeesContext)
 
   function handleSelectButton(type: string) {
     if(cardButtonType == type) {
@@ -104,40 +105,29 @@ export function Checkout() {
         <h1> Cafés Selecionados </h1>
         <div className="checkoutContainer">
           <form action="">
-            <article>
-              <img src={expresso} alt="" />
-              <div>
-                <p> Expresso Tradicional </p>
-                <div className="item-buttons">
-                  <button type="button">
-                    {' '}
-                    <Minus size={16} /> 1 <Plus size={16} />{' '}
-                  </button>
-                  <button type="button">
-                    {' '}
-                    <Trash size={16} /> REMOVER{' '}
-                  </button>
-                </div>
-              </div>
-              <strong> R$ 9,90</strong>
-            </article>
-            <article>
-              <img src={expresso} alt="" />
-              <div>
-                <p> Expresso Tradicional </p>
-                <div className="item-buttons">
-                  <button type="button">
-                    {' '}
-                    <Minus size={16} /> 1 <Plus size={16} />{' '}
-                  </button>
-                  <button type="button">
-                    {' '}
-                    <Trash size={16} /> REMOVER{' '}
-                  </button>
-                </div>
-              </div>
-              <strong> R$ 9,90</strong>
-            </article>
+            {
+              totalItensSelectedForBuy.map(item => {
+                  return(
+                    <article key={item.id}>
+                        <img src={item.img_item} alt="" />
+                        <div>
+                          <p> {item.title} </p>
+                          <div className="item-buttons">
+                            <button type="button">
+                              {' '}
+                              <Minus size={16} /> {item.quantity} <Plus size={16} />{' '}
+                            </button>
+                            <button type="button">
+                              {' '}
+                              <Trash size={16} /> REMOVER{' '}
+                            </button>
+                          </div>
+                        </div>
+                        <strong> {item.price} </strong>
+                      </article>
+                  );
+              })
+            }
             <span> Total de itens </span>
             <span> Entrega </span>
             <strong> Total </strong>
