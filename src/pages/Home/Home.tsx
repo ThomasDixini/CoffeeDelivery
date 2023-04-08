@@ -18,14 +18,14 @@ import {
 import copo from '../../assets/copo.svg'
 
 import { useContext, useState } from 'react'
-import { CoffeeType, CoffeesContext } from '../../contexts/CoffeesContext'
+import { CoffeesContext } from '../../contexts/CoffeesContext'
 
 
 
 export function Home() {
   
   const [quantityItem, setQuantityItem] = useState(0)
-  const { coffeeList, addItemOnCart } = useContext(CoffeesContext)
+  const { coffeeList, addItemOnCart, removeItemOnCart } = useContext(CoffeesContext)
 
   function handleIncrementItem(id: number) {
     coffeeList.map(coffee => {
@@ -43,6 +43,7 @@ export function Home() {
       if(coffee.id === id) {
         if(quantityItem > 0) {
           setQuantityItem(coffee.quantity -= 1)
+          removeItemOnCart(coffee)
         }
         return {...coffee, quantity: quantityItem}
       } else {

@@ -33,6 +33,8 @@ interface CoffeesContextData {
     totalItensSelectedForBuy: CoffeeType[];
     sumState: number;
     addItemOnCart: (item: CoffeeType) => void;
+    removeItemOnCart: (item: CoffeeType) => void;
+    
 }
 
 export const CoffeesContext = createContext({} as CoffeesContextData);
@@ -192,8 +194,18 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
         }
     }
 
+    function removeItemOnCart(item: CoffeeType) {
+        if(item.quantity == 1){
+            const itemRemoved = totalItensSelectedForBuy.filter(itemSelected => itemSelected.id !== item.id)
+            setTotalItensSelectedForBuy(itemRemoved)
+            setSumState(state => state -= 1)
+        } else {
+            setSumState(state => state -= 1)
+        }
+    }
+
     return(
-        <CoffeesContext.Provider value={{coffeeList,totalItensSelectedForBuy,sumState,addItemOnCart}}>
+        <CoffeesContext.Provider value={{coffeeList,totalItensSelectedForBuy,sumState,addItemOnCart,removeItemOnCart}}>
             {children}
         </CoffeesContext.Provider>
     );
