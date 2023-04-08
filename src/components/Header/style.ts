@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const HeaderContainer = styled.header`
+interface HeaderContainerProps {
+  sumOfTotalItensInCart: number
+}
+
+export const HeaderContainer = styled.header<HeaderContainerProps>`
   padding: 2rem 10rem;
   display: flex;
   justify-content: space-between;
@@ -40,7 +44,7 @@ export const HeaderContainer = styled.header`
       }
 
       &::after {
-        content: '10';
+        content: '${props => props.sumOfTotalItensInCart}';
         width: 20px;
         height: 20px;
         display: flex;
