@@ -14,7 +14,7 @@ import Havaiano from '../assets/Havaiano.svg'
 import Árabe from '../assets/Árabe.svg'
 import Irlandês from '../assets/Irlandês.svg'
 
-interface CoffeeType {
+export interface CoffeeType {
     id: number
     img_item: string
     type: string[]
@@ -29,7 +29,9 @@ interface CoffeesContextProviderProps{
 }
 
 interface CoffeesContextData {
-    coffeeList: Array<CoffeeType>;
+    coffeeList: CoffeeType[];
+    totalItensSelectedForBuy: CoffeeType[];
+    addItemOnCart: (item: CoffeeType) => void;
 }
 
 export const CoffeesContext = createContext({} as CoffeesContextData);
@@ -168,9 +170,20 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
           price: 9.99,
         }
       ])
+    
+    const [totalItensSelectedForBuy, setTotalItensSelectedForBuy] = useState<CoffeeType[]>([])
+
+      function addItemOnCart(item: CoffeeType) {
+        const itemAlreadyExists = totalItensSelectedForBuy.find(itemSelected => itemSelected.id == item.id)
+        if(itemAlreadyExists) {
+            return
+        } else {
+            setTotalItensSelectedForBuy(state => [...state, item])
+        }
+      }
 
     return(
-        <CoffeesContext.Provider value={{coffeeList}}>
+        <CoffeesContext.Provider value={{coffeeList,totalItensSelectedForBuy,addItemOnCart}}>
             {children}
         </CoffeesContext.Provider>
     );

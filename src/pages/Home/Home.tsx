@@ -18,20 +18,20 @@ import {
 import copo from '../../assets/copo.svg'
 
 import { useContext, useState } from 'react'
-import { CoffeesContext } from '../../contexts/CoffeesContext'
+import { CoffeeType, CoffeesContext } from '../../contexts/CoffeesContext'
 
 
 
 export function Home() {
   
-  const [totalItensSelectedForBuy, setTotalItensSelectedForBuy] = useState([])
   const [quantityItem, setQuantityItem] = useState(0)
-  const { coffeeList } = useContext(CoffeesContext)
+  const { coffeeList, addItemOnCart } = useContext(CoffeesContext)
 
   function handleIncrementItem(id: number) {
     coffeeList.map(coffee => {
       if(coffee.id === id) {
         setQuantityItem(coffee.quantity += 1)
+        addItemOnCart(coffee)
         return {...coffee, quantity: quantityItem}
       } else {
         return coffee
