@@ -49,6 +49,7 @@ $ npm run dev
 As seguintes tecnologias foram usadas na construção do projeto.
 
 * [React](https://pt-br.reactjs.org)
+* [Styled-Components](https://styled-components.com)
 * Em andamento ...
 
 # Autoria do Projeto
