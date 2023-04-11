@@ -43,6 +43,25 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
         color: ${(props) => props.theme.white};
       }
 
+      @keyframes balancingItens {
+        0% {
+          transform: translateY(0px);
+        } 
+        10% {
+          rotate: 10deg;
+        }
+        50% {
+          rotate: -10deg;
+        }
+        70% {
+          rotate: 10deg;
+        }
+        100% {
+          rotate: -10deg;
+          transform: translateY(-5px);
+        }
+      }
+
       &::after {
         content: '${props => props.sumOfTotalItensInCart}';
         width: 20px;
@@ -61,6 +80,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
         text-decoration: none;
         background-color: ${(props) => props.theme['yellow-dark']};
         color: ${(props) => props.theme.white};
+        animation: balancingItens 1s alternate infinite;
       }
     }
   }
