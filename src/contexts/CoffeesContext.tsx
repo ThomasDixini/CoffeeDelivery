@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import expresso from '../assets/expresso.svg'
 import Americano from '../assets/Americano.svg'
 import Cremoso from '../assets/Cremoso.svg'
@@ -173,7 +173,13 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
           price: 9.99,
         }
       ])
-    const [totalItensSelectedForBuy, setTotalItensSelectedForBuy] = useState<CoffeeType[]>([])
+    const [totalItensSelectedForBuy, setTotalItensSelectedForBuy] = useState<CoffeeType[]>(() => {
+      const storedStateAsJSON = localStorage.getItem('@coffee-delivery:totalItens-1.0.0')
+
+      if(storedStateAsJSON){
+        return JSON.parse(storedStateAsJSON)
+      }
+    })
     const [ sumState, setSumState ] = useState(0);
 
 
@@ -203,6 +209,12 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
             setSumState(state => state -= 1)
         }
     }
+
+    useEffect(() => {
+      const stateJSON = JSON.stringify(totalItensSelectedForBuy)
+  
+      localStorage.setItem('@coffee-delivery:totalItens-1.0.0', stateJSON)
+    }, [totalItensSelectedForBuy])
 
     return(
         <CoffeesContext.Provider value={{coffeeList,totalItensSelectedForBuy,sumState,addItemOnCart,removeItemOnCart}}>
