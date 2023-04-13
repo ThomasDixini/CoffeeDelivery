@@ -180,8 +180,16 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
         return JSON.parse(storedStateAsJSON)
       }
     })
-    const [ sumState, setSumState ] = useState(0);
+    const [ sumState, setSumState ] = useState(() => {
+      const storedStateAsJSON = localStorage.getItem('@coffee-delivery:sumOfItens-1.0.0')
 
+      if(storedStateAsJSON){
+        return JSON.parse(storedStateAsJSON)
+      }
+    });
+    
+
+    
 
     function sumOfItemsOnCart() {
         const sumOfTotalItensInCart = totalItensSelectedForBuy.reduce(( finalValue, currentElement ) => {
@@ -212,9 +220,11 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
 
     useEffect(() => {
       const stateJSON = JSON.stringify(totalItensSelectedForBuy)
-  
+      const stateSumOfItensJSON = JSON.stringify(sumState)
+      
       localStorage.setItem('@coffee-delivery:totalItens-1.0.0', stateJSON)
-    }, [totalItensSelectedForBuy])
+      localStorage.setItem('@coffee-delivery:sumOfItens-1.0.0', stateSumOfItensJSON)
+    }, [totalItensSelectedForBuy, sumState])
 
     return(
         <CoffeesContext.Provider value={{coffeeList,totalItensSelectedForBuy,sumState,addItemOnCart,removeItemOnCart}}>
