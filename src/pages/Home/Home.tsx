@@ -1,11 +1,4 @@
-import {
-  Coffee,
-  Minus,
-  Package,
-  Plus,
-  ShoppingCart,
-  Timer,
-} from 'phosphor-react'
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
 import {
   CoffeeItem,
@@ -17,40 +10,13 @@ import {
 
 import copo from '../../assets/copo.svg'
 
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { CoffeesContext } from '../../contexts/CoffeesContext'
-
-
+import { IncreaseButton } from '../../components/IncreaseButton/IncreaseButton'
 
 export function Home() {
-  
-  const [quantityItem, setQuantityItem] = useState(0)
-  const { coffeeList, addItemOnCart, removeItemOnCart } = useContext(CoffeesContext)
-
-  function handleIncrementItem(id: number) {
-    coffeeList.map(coffee => {
-      if(coffee.id === id) {
-        setQuantityItem(coffee.quantity += 1)
-        addItemOnCart(coffee)
-        return {...coffee, quantity: quantityItem}
-      } else {
-        return coffee
-      }
-    })  
-  }
-  function handleDecrementItem(id: number) {
-    coffeeList.map(coffee => {
-      if(coffee.id === id) {
-        if(quantityItem > 0) {
-          setQuantityItem(coffee.quantity -= 1)
-          removeItemOnCart(coffee)
-        }
-        return {...coffee, quantity: quantityItem}
-      } else {
-        return coffee
-      }
-    })  
-  }
+  const { coffeeList, handleIncrementItem, handleDecrementItem } =
+    useContext(CoffeesContext)
 
   return (
     <MainContainer>
@@ -108,10 +74,12 @@ export function Home() {
                 <p> {coffee.description} </p>
                 <div>
                   <span> {coffee.price} </span>
-                  <button type="button">
-                    {' '}
-                    <Minus onClick={() => handleDecrementItem(coffee.id)}/> {coffee.quantity} <Plus onClick={() => handleIncrementItem(coffee.id)} />{' '}
-                  </button>
+                  <IncreaseButton
+                    id={coffee.id}
+                    quantity={coffee.quantity}
+                    handleIncrementItem={handleIncrementItem}
+                    handleDecrementItem={handleDecrementItem}
+                  />
                   <button type="submit">
                     <ShoppingCart weight="fill" size={24} />{' '}
                   </button>
