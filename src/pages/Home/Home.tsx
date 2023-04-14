@@ -25,33 +25,7 @@ import { IncreaseButton } from '../../components/IncreaseButton/IncreaseButton'
 
 export function Home() {
   
-  const [quantityItem, setQuantityItem] = useState(0)
-  const { coffeeList, addItemOnCart, removeItemOnCart } = useContext(CoffeesContext)
-
-  function handleIncrementItem(id: number) {
-    coffeeList.map(coffee => {
-      if(coffee.id === id) {
-        setQuantityItem(coffee.quantity += 1)
-        addItemOnCart(coffee)
-        return {...coffee, quantity: quantityItem}
-      } else {
-        return coffee
-      }
-    })  
-  }
-  function handleDecrementItem(id: number) {
-    coffeeList.map(coffee => {
-      if(coffee.id === id) {
-        if(quantityItem > 0) {
-          setQuantityItem(coffee.quantity -= 1)
-          removeItemOnCart(coffee)
-        }
-        return {...coffee, quantity: quantityItem}
-      } else {
-        return coffee
-      }
-    })  
-  }
+  const { coffeeList, addItemOnCart, removeItemOnCart, handleIncrementItem, handleDecrementItem } = useContext(CoffeesContext)
 
   return (
     <MainContainer>

@@ -16,12 +16,13 @@ import {
   Plus,
   Trash,
 } from 'phosphor-react'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { CoffeesContext } from '../../contexts/CoffeesContext'
+import { IncreaseButton } from '../../components/IncreaseButton/IncreaseButton'
 
 export function Checkout() {
   const [cardButtonType, setCardButtonType] = useState('')
-  const { totalItensSelectedForBuy } = useContext(CoffeesContext)
+  const { totalItensSelectedForBuy, handleIncrementItem, handleDecrementItem } = useContext(CoffeesContext)
 
   function handleSelectButton(type: string) {
     if(cardButtonType == type) {
@@ -29,6 +30,8 @@ export function Checkout() {
     }
     setCardButtonType(type)
   }
+
+  
 
   return (
     <CheckoutMain>
@@ -113,10 +116,7 @@ export function Checkout() {
                         <div>
                           <p> {item.title} </p>
                           <div className="item-buttons">
-                            <button type="button">
-                              {' '}
-                              <Minus size={16} /> {item.quantity} <Plus size={16} />{' '}
-                            </button>
+                            <IncreaseButton id={item.id} quantity={item.quantity} handleIncrementItem={handleIncrementItem} handleDecrementItem={handleDecrementItem}/>
                             <button type="button">
                               {' '}
                               <Trash size={16} /> REMOVER{' '}
