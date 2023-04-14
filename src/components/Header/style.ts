@@ -46,7 +46,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
       @keyframes balancingItens {
         0% {
           transform: translateY(0px);
-        } 
+        }
         10% {
           rotate: 10deg;
         }
@@ -63,7 +63,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
       }
 
       &::after {
-        content: '${props => props.sumOfTotalItensInCart}';
+        content: '${(props) => props.sumOfTotalItensInCart}';
         width: 20px;
         height: 20px;
         display: flex;

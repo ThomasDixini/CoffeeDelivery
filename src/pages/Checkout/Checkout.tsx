@@ -11,22 +11,25 @@ import {
   CreditCard,
   CurrencyDollar,
   MapPinLine,
-  Minus,
   Money,
-  Plus,
   Trash,
 } from 'phosphor-react'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { CoffeesContext } from '../../contexts/CoffeesContext'
 import { IncreaseButton } from '../../components/IncreaseButton/IncreaseButton'
 
 export function Checkout() {
   const [cardButtonType, setCardButtonType] = useState('')
-  const { totalItensSelectedForBuy, handleIncrementItem, handleDecrementItem, handleDeleteitem } = useContext(CoffeesContext)
+  const {
+    totalItensSelectedForBuy,
+    handleIncrementItem,
+    handleDecrementItem,
+    handleDeleteitem,
+  } = useContext(CoffeesContext)
 
   function handleSelectButton(type: string) {
-    if(cardButtonType == type) {
-        return setCardButtonType('')
+    if (cardButtonType === type) {
+      return setCardButtonType('')
     }
     setCardButtonType(type)
   }
@@ -106,26 +109,32 @@ export function Checkout() {
         <h1> Cafés Selecionados </h1>
         <div className="checkoutContainer">
           <form action="">
-            {
-              totalItensSelectedForBuy.map(item => {
-                  return(
-                    <article key={item.id}>
-                        <img src={item.img_item} alt="" />
-                        <div>
-                          <p> {item.title} </p>
-                          <div className="item-buttons">
-                            <IncreaseButton id={item.id} quantity={item.quantity} handleIncrementItem={handleIncrementItem} handleDecrementItem={handleDecrementItem}/>
-                            <button type="button" onClick={() => handleDeleteitem(item.id)}>
-                              {' '}
-                              <Trash size={16} /> REMOVER{' '}
-                            </button>
-                          </div>
-                        </div>
-                        <strong> {item.price} </strong>
-                      </article>
-                  );
-              })
-            }
+            {totalItensSelectedForBuy.map((item) => {
+              return (
+                <article key={item.id}>
+                  <img src={item.img_item} alt="" />
+                  <div>
+                    <p> {item.title} </p>
+                    <div className="item-buttons">
+                      <IncreaseButton
+                        id={item.id}
+                        quantity={item.quantity}
+                        handleIncrementItem={handleIncrementItem}
+                        handleDecrementItem={handleDecrementItem}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteitem(item.id)}
+                      >
+                        {' '}
+                        <Trash size={16} /> REMOVER{' '}
+                      </button>
+                    </div>
+                  </div>
+                  <strong> {item.price} </strong>
+                </article>
+              )
+            })}
             <span> Total de itens </span>
             <span> Entrega </span>
             <strong> Total </strong>

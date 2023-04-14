@@ -7,28 +7,29 @@ export const CheckoutMain = styled.main`
   gap: 2rem;
   margin: 0 auto;
 
-  @media (max-width: 700px){
+  @media (max-width: 700px) {
     flex-direction: column;
     justify-content: center;
     padding: 2rem;
 
     section {
+      div {
         div {
-          div {
-            grid-template-columns: 1fr;
-            grid-template-areas: 'cep'
-                'rua'
-                'numero'
-                'complemento'
-                'bairro' 
-                'cidade' 
-                'uf';
-          }  
-          .creditcard-buttons {
-            display: flex;
-            flex-direction: column;
-          }
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            'cep'
+            'rua'
+            'numero'
+            'complemento'
+            'bairro'
+            'cidade'
+            'uf';
         }
+        .creditcard-buttons {
+          display: flex;
+          flex-direction: column;
+        }
+      }
     }
   }
 `
@@ -157,7 +158,9 @@ export const Button = styled.button<ButtonProps>`
       ? props.theme['purple-light']
       : props.theme['base-200']};
   border: ${(props) =>
-    props.buttonSelected ? `1px solid ${props.theme.purple}` : '1px solid transparent'};
+    props.buttonSelected
+      ? `1px solid ${props.theme.purple}`
+      : '1px solid transparent'};
   transition: all 0.2s;
   &:hover {
     filter: brightness(0.8);
@@ -247,5 +250,3 @@ export const CartContainer = styled.section`
     }
   }
 `
-
-
