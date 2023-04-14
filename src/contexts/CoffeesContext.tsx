@@ -34,6 +34,7 @@ interface CoffeesContextData {
     sumState: number;
     addItemOnCart: (item: CoffeeType) => void;
     removeItemOnCart: (item: CoffeeType) => void;
+    handleDeleteitem: (id: number) => void;
     handleIncrementItem: (id: number) => void;
     handleDecrementItem: (id: number) => void;
 }
@@ -197,13 +198,17 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
     }
 
     function removeItemOnCart(item: CoffeeType) {
-        if(item.quantity == 1){
+        if(item.quantity == 0){
             const itemRemoved = totalItensSelectedForBuy.filter(itemSelected => itemSelected.id !== item.id)
             setTotalItensSelectedForBuy(itemRemoved)
             setSumState(state => state -= 1)
         } else {
             setSumState(state => state -= 1)
         }
+    }
+    function handleDeleteitem(id: number) {
+      const itemFiltred = totalItensSelectedForBuy.filter(itemSelected => itemSelected.id !== id)
+      setTotalItensSelectedForBuy(itemFiltred)
     }
     function handleIncrementItem(id: number) {
       coffeeList.map(coffee => {
@@ -231,7 +236,15 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
     }
 
     return(
-        <CoffeesContext.Provider value={{coffeeList,totalItensSelectedForBuy,sumState,addItemOnCart,removeItemOnCart, handleIncrementItem, handleDecrementItem}}>
+        <CoffeesContext.Provider value={{
+          coffeeList,totalItensSelectedForBuy,
+          sumState,
+          addItemOnCart,
+          removeItemOnCart, 
+          handleIncrementItem, 
+          handleDecrementItem,
+          handleDeleteitem
+          }}>
             {children}
         </CoffeesContext.Provider>
     );

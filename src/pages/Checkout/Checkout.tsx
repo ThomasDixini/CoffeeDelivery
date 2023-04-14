@@ -22,7 +22,7 @@ import { IncreaseButton } from '../../components/IncreaseButton/IncreaseButton'
 
 export function Checkout() {
   const [cardButtonType, setCardButtonType] = useState('')
-  const { totalItensSelectedForBuy, handleIncrementItem, handleDecrementItem } = useContext(CoffeesContext)
+  const { totalItensSelectedForBuy, handleIncrementItem, handleDecrementItem, handleDeleteitem } = useContext(CoffeesContext)
 
   function handleSelectButton(type: string) {
     if(cardButtonType == type) {
@@ -30,8 +30,6 @@ export function Checkout() {
     }
     setCardButtonType(type)
   }
-
-  
 
   return (
     <CheckoutMain>
@@ -117,7 +115,7 @@ export function Checkout() {
                           <p> {item.title} </p>
                           <div className="item-buttons">
                             <IncreaseButton id={item.id} quantity={item.quantity} handleIncrementItem={handleIncrementItem} handleDecrementItem={handleDecrementItem}/>
-                            <button type="button">
+                            <button type="button" onClick={() => handleDeleteitem(item.id)}>
                               {' '}
                               <Trash size={16} /> REMOVER{' '}
                             </button>
