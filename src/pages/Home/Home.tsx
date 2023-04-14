@@ -19,6 +19,7 @@ import copo from '../../assets/copo.svg'
 
 import { useContext, useState } from 'react'
 import { CoffeesContext } from '../../contexts/CoffeesContext'
+import { IncreaseButton } from '../../components/IncreaseButton/IncreaseButton'
 
 
 
@@ -108,10 +109,12 @@ export function Home() {
                 <p> {coffee.description} </p>
                 <div>
                   <span> {coffee.price} </span>
-                  <button type="button">
-                    {' '}
-                    <Minus onClick={() => handleDecrementItem(coffee.id)}/> {coffee.quantity} <Plus onClick={() => handleIncrementItem(coffee.id)} />{' '}
-                  </button>
+                    <IncreaseButton 
+                      id={coffee.id} 
+                      quantity={coffee.quantity} 
+                      handleIncrementItem={handleIncrementItem} 
+                      handleDecrementItem={handleDecrementItem}
+                    />
                   <button type="submit">
                     <ShoppingCart weight="fill" size={24} />{' '}
                   </button>
