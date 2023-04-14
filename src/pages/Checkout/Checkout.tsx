@@ -14,7 +14,7 @@ import {
   Money,
   Trash,
 } from 'phosphor-react'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { CoffeesContext } from '../../contexts/CoffeesContext'
 import { IncreaseButton } from '../../components/IncreaseButton/IncreaseButton'
 
@@ -33,6 +33,12 @@ export function Checkout() {
     }
     setCardButtonType(type)
   }
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(totalItensSelectedForBuy)
+
+    localStorage.setItem('@coffee-delivery:totalItens-1.0.0', stateJSON)
+  }, [totalItensSelectedForBuy])
 
   return (
     <CheckoutMain>
