@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 interface HeaderContainerProps {
-  sumOfTotalItensInCart: number
+  sumOfTotalItensInCart: number | undefined
 }
 
 export const HeaderContainer = styled.header<HeaderContainerProps>`

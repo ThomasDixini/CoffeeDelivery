@@ -31,7 +31,7 @@ interface CoffeesContextProviderProps{
 interface CoffeesContextData {
     coffeeList: CoffeeType[];
     totalItensSelectedForBuy: CoffeeType[];
-    sumState: number;
+    sumState: number | undefined;
     addItemOnCart: (item: CoffeeType) => void;
     removeItemOnCart: (item: CoffeeType) => void;
     
@@ -184,12 +184,10 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
       const storedStateAsJSON = localStorage.getItem('@coffee-delivery:sumOfItens-1.0.0')
 
       if(storedStateAsJSON){
-        return JSON.parse(storedStateAsJSON)
+        const JsonAsParsed: number = JSON.parse(storedStateAsJSON)
+        return JsonAsParsed
       }
     });
-    
-
-    
 
     function sumOfItemsOnCart() {
         const sumOfTotalItensInCart = totalItensSelectedForBuy.reduce(( finalValue, currentElement ) => {
@@ -204,7 +202,11 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
             return sumOfItemsOnCart();
         } else {
             setTotalItensSelectedForBuy(state => [...state, item])
-            setSumState(state => state += 1)
+            setSumState(state => {
+              if(state != undefined){
+                return state += 1
+              }
+            })
         }
     }
 
@@ -212,9 +214,17 @@ export function CoffeesContextProvider({ children }: CoffeesContextProviderProps
         if(item.quantity == 1){
             const itemRemoved = totalItensSelectedForBuy.filter(itemSelected => itemSelected.id !== item.id)
             setTotalItensSelectedForBuy(itemRemoved)
-            setSumState(state => state -= 1)
+            setSumState(state => {
+              if(state != undefined){
+                return state += 1
+              }
+            })
         } else {
-            setSumState(state => state -= 1)
+            setSumState(state => {
+              if(state != undefined){
+                return state += 1
+              }
+            })
         }
     }
 
