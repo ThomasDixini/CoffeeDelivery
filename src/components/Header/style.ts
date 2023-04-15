@@ -36,8 +36,6 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
       gap: 1rem;
       position: relative;
 
-      transition: all 0.15s;
-
       &[href='/checkout']:hover {
         background-color: ${(props) => props.theme.yellow};
         color: ${(props) => props.theme.white};
@@ -66,7 +64,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
         content: '${(props) => props.sumOfTotalItensInCart}';
         width: 20px;
         height: 20px;
-        display: flex;
+        display: ${props => props.sumOfTotalItensInCart == 0 ? 'none' : 'flex'};
         align-items: center;
         justify-content: center;
         position: absolute;
