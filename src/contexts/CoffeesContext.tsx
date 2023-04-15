@@ -221,6 +221,12 @@ export function CoffeesContextProvider({
       (itemSelected) => itemSelected.id !== id,
     )
     setTotalItensSelectedForBuy(itemFiltred)
+    setSumState(0)
+    coffeeList.map(coffee => {
+      if(coffee.id === id){
+        return coffee.quantity = 0
+      }
+    })
   }
   function handleIncrementItem(id: number) {
     coffeeList.map((coffee) => {
