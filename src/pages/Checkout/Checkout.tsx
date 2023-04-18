@@ -5,6 +5,8 @@ import {
   CartContainer,
   CheckoutMain,
   CreditCardSelection,
+  SpanCheckout,
+  StrongTotal,
 } from './styles'
 import {
   Bank,
@@ -117,33 +119,36 @@ export function Checkout() {
           <form action="">
             {totalItensSelectedForBuy.map((item) => {
               return (
-                <article key={item.id}>
-                  <img src={item.img_item} alt="" />
-                  <div>
-                    <p> {item.title} </p>
-                    <div className="item-buttons">
-                      <IncreaseButton
-                        id={item.id}
-                        quantity={item.quantity}
-                        handleIncrementItem={handleIncrementItem}
-                        handleDecrementItem={handleDecrementItem}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => handleDeleteitem(item.id)}
-                      >
-                        {' '}
-                        <Trash size={16} /> REMOVER{' '}
-                      </button>
+                <>
+                  <article key={item.id}>
+                    <img src={item.img_item} alt="" />
+                    <div>
+                      <p> {item.title} </p>
+                      <div className="item-buttons">
+                        <IncreaseButton
+                          id={item.id}
+                          quantity={item.quantity}
+                          handleIncrementItem={handleIncrementItem}
+                          handleDecrementItem={handleDecrementItem}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteitem(item.id)}
+                        >
+                          {' '}
+                          <Trash size={16} /> REMOVER{' '}
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <strong> {item.price} </strong>
-                </article>
+                    <strong> {item.price} </strong>
+                  </article>
+                  <SpanCheckout totalItens={ item.quantity * item.price }> Total de itens  </SpanCheckout>
+                  <SpanCheckout> Entrega </SpanCheckout>
+                  <StrongTotal totalItens={ (item.quantity * item.price) + 3.50 }> Total </StrongTotal>
+                </>
               )
             })}
-            <span> Total de itens </span>
-            <span> Entrega </span>
-            <strong> Total </strong>
+            
             <button type="submit"> CONFIRMAR PEDIDO </button>
           </form>
         </div>
