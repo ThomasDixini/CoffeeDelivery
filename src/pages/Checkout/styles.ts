@@ -244,7 +244,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 &::after {
-  content: '${props => props.totalItens ? props.totalItens : '3,50' }';
+  content: '${props => "R$ " + props.totalItens}';
 }
 `
 
@@ -254,7 +254,7 @@ export const StrongTotal = styled.strong<CheckoutComponentProps>`
   align-items: center;
   justify-content: space-between;
   &::after {
-    content: '${props => props.totalItens ? props.totalItens : '3,50' }';
+    content: '${props => "R$ " + props.totalItens}';
   }
 }
 `

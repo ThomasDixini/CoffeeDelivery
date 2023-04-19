@@ -42,6 +42,11 @@ export function Checkout() {
     localStorage.setItem('@coffee-delivery:totalItens-1.0.0', stateJSON)
   }, [totalItensSelectedForBuy])
 
+  const itensQuantityPrice = totalItensSelectedForBuy.reduce((acc, item) => {
+    acc += item.quantity * item.price
+    return acc
+  }, 0)
+
   return (
     <CheckoutMain>
       <AdressContainer>
@@ -142,13 +147,13 @@ export function Checkout() {
                     </div>
                     <strong> {item.price} </strong>
                   </article>
-                  <SpanCheckout totalItens={ item.quantity * item.price }> Total de itens  </SpanCheckout>
-                  <SpanCheckout> Entrega </SpanCheckout>
-                  <StrongTotal totalItens={ (item.quantity * item.price) + 3.50 }> Total </StrongTotal>
+                  
                 </>
               )
             })}
-            
+            <SpanCheckout totalItens={ itensQuantityPrice }> Total de itens  </SpanCheckout>
+            <SpanCheckout totalItens={ 3.50 }> Entrega </SpanCheckout>
+            <StrongTotal totalItens={ itensQuantityPrice + 3.50 }> Total </StrongTotal>
             <button type="submit"> CONFIRMAR PEDIDO </button>
           </form>
         </div>
