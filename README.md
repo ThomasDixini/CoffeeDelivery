@@ -67,7 +67,6 @@ As seguintes tecnologias foram usadas na construção do projeto.
 * [Vite](https://vitejs.dev)
 * [Phosphor-React](https://phosphoricons.com)
 * [React-Router-Dom](https://www.npmjs.com/package/react-router-dom)
-* Em andamento ...
 
 # Autoria do Projeto
 
