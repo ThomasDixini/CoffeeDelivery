@@ -16,9 +16,14 @@
 
 # Features
 
-    [x] 
-    [ ]
-    [ ]
+    [x] Listagem de produtos (cafés) disponíveis para compra
+    [x] Adicionar uma quantidade específicas de itens no carrinho
+    [x] Aumentar ou remover a quantidade de itens no carrinho
+    [x] Formulário para o usuário preencher o seu endereço
+    [x] Exibir o total de itens no carrinho no Header
+    [x] Exibir o valor total da soma de itens no carrinho multiplicados pelo valor
+    [ ] LocalStorage
+    [x] ContextAPI
 # Demonstrações
 
 <br> 
@@ -50,6 +55,10 @@ As seguintes tecnologias foram usadas na construção do projeto.
 
 * [React](https://pt-br.reactjs.org)
 * [Styled-Components](https://styled-components.com)
+* [Typescript](https://www.typescriptlang.org/docs/)
+* [Vite](https://vitejs.dev)
+* [Phosphor-React](https://phosphoricons.com)
+* [React-Router-Dom](https://www.npmjs.com/package/react-router-dom)
 * Em andamento ...
 
 # Autoria do Projeto
