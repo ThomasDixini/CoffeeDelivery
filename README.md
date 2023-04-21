@@ -12,7 +12,15 @@
 
 # Sobre
 
-<p align="center" style="font-size: 20px"> Descrição do projeto em andamento ... </p>
+<p align="center" style="font-size: 20px"> A aplicação web de delivery de café permite ao usuário acessar a lista de produtos disponíveis, adicioná-los em um carrinho de compras virtual, aumentar ou remover a quantidade de itens, preencher um formulário com o endereço de entrega e visualizar o total de itens e o valor da compra em tempo real.
+
+O usuário pode navegar pela lista de produtos, selecionar a quantidade desejada e adicionar ao carrinho. O carrinho é atualizado automaticamente, permitindo ao usuário visualizar a quantidade de itens adicionados e o valor total da compra.
+
+Ao finalizar a seleção dos produtos, o usuário preenche um formulário com o endereço de entrega, para que a empresa possa realizar a entrega dos produtos.
+
+A aplicação também exibe o total de itens no carrinho no Header, tornando fácil para o usuário visualizar sua seleção atual.
+
+Por fim, a aplicação exibe o valor total da soma de itens no carrinho multiplicados pelo valor do produto, permitindo que o usuário tenha uma visão clara do valor total da sua compra. </p>
 
 # Features
 
