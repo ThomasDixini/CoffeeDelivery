@@ -1,18 +1,16 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
 import {
-  CoffeeItem,
   CoffeeListSection,
   MainContainer,
   SloganSection,
-  Subtitle,
 } from './style'
 
 import copo from '../../assets/copo.svg'
 
 import { useContext } from 'react'
 import { CoffeesContext } from '../../contexts/CoffeesContext'
-import { IncreaseButton } from '../../components/IncreaseButton/IncreaseButton'
+import { CoffeeItem } from '../../components/CoffeeItem/CoffeeItem'
 
 export function Home() {
   const { coffeeList, handleIncrementItem, handleDecrementItem } =
@@ -62,29 +60,16 @@ export function Home() {
         <form action="">
           {coffeeList.map((coffee) => {
             return (
-              <CoffeeItem key={coffee.id}>
-                <img src={coffee.img_item} alt="Imagem de café" />
-                <strong> {coffee.title} </strong>
-                <Subtitle>
-                  {coffee.type.map((item) => {
-                    return <b key={Math.random()}> {item} </b>
-                  })}
-                </Subtitle>
-
-                <p> {coffee.description} </p>
-                <div>
-                  <span> {coffee.price} </span>
-                  <IncreaseButton
-                    id={coffee.id}
-                    quantity={coffee.quantity}
-                    handleIncrementItem={handleIncrementItem}
-                    handleDecrementItem={handleDecrementItem}
-                  />
-                  <button type="submit">
-                    <ShoppingCart weight="fill" size={24} />{' '}
-                  </button>
-                </div>
-              </CoffeeItem>
+              <CoffeeItem 
+                id={coffee.id} 
+                img_item={coffee.img_item} 
+                title={coffee.title} type={coffee.type} 
+                description={coffee.description} 
+                price={coffee.price} 
+                quantity={coffee.quantity}
+                incrementItem={handleIncrementItem}
+                decrementItem={handleDecrementItem}
+                />
             )
           })}
         </form>
