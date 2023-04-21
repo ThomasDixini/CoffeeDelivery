@@ -44,7 +44,7 @@ export const CoffeesContext = createContext({} as CoffeesContextData)
 export function CoffeesContextProvider({
   children,
 }: CoffeesContextProviderProps) {
-  const [coffeeList, setCoffeeList] = useState<CoffeeType[]>([
+  const [coffeeList] = useState<CoffeeType[]>([
     {
       id: 1,
       img_item: expresso,
@@ -222,9 +222,9 @@ export function CoffeesContextProvider({
     )
     setTotalItensSelectedForBuy(itemFiltred)
     setSumState(0)
-    coffeeList.map(coffee => {
-      if(coffee.id === id){
-        return coffee.quantity = 0
+    coffeeList.map((coffee) => {
+      if (coffee.id === id) {
+        return (coffee.quantity = 0)
       }
     })
   }

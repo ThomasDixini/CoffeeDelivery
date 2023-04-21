@@ -64,7 +64,8 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
         content: '${(props) => props.sumOfTotalItensInCart}';
         width: 20px;
         height: 20px;
-        display: ${props => props.sumOfTotalItensInCart == 0 ? 'none' : 'flex'};
+        display: ${(props) =>
+          props.sumOfTotalItensInCart === 0 ? 'none' : 'flex'};
         align-items: center;
         justify-content: center;
         position: absolute;

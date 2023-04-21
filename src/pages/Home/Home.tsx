@@ -1,10 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
-import {
-  CoffeeListSection,
-  MainContainer,
-  SloganSection,
-} from './style'
+import { CoffeeListSection, MainContainer, SloganSection } from './style'
 
 import copo from '../../assets/copo.svg'
 
@@ -60,16 +56,18 @@ export function Home() {
         <form action="">
           {coffeeList.map((coffee) => {
             return (
-              <CoffeeItem 
-                id={coffee.id} 
-                img_item={coffee.img_item} 
-                title={coffee.title} type={coffee.type} 
-                description={coffee.description} 
-                price={coffee.price} 
+              <CoffeeItem
+                key={coffee.id}
+                id={coffee.id}
+                img_item={coffee.img_item}
+                title={coffee.title}
+                type={coffee.type}
+                description={coffee.description}
+                price={coffee.price}
                 quantity={coffee.quantity}
                 incrementItem={handleIncrementItem}
                 decrementItem={handleDecrementItem}
-                />
+              />
             )
           })}
         </form>

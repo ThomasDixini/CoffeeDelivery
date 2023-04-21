@@ -147,13 +147,18 @@ export function Checkout() {
                     </div>
                     <strong> {item.price} </strong>
                   </article>
-                  
                 </>
               )
             })}
-            <SpanCheckout totalItens={ itensQuantityPrice }> Total de itens  </SpanCheckout>
-            <SpanCheckout totalItens={ 3.50 }> Entrega </SpanCheckout>
-            <StrongTotal totalItens={ itensQuantityPrice + 3.50 }> Total </StrongTotal>
+            <SpanCheckout totalItens={itensQuantityPrice}>
+              {' '}
+              Total de itens{' '}
+            </SpanCheckout>
+            <SpanCheckout totalItens={3.5}> Entrega </SpanCheckout>
+            <StrongTotal totalItens={itensQuantityPrice + 3.5}>
+              {' '}
+              Total{' '}
+            </StrongTotal>
             <button type="submit"> CONFIRMAR PEDIDO </button>
           </form>
         </div>

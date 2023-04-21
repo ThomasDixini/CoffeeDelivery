@@ -235,26 +235,25 @@ export const CartContainer = styled.section`
   }
 `
 interface CheckoutComponentProps {
-  totalItens?: number;
+  totalItens?: number
 }
 
 export const SpanCheckout = styled.span<CheckoutComponentProps>`
-
-display: flex;
-align-items: center;
-justify-content: space-between;
-&::after {
-  content: '${props => "R$ " + props.totalItens}';
-}
-`
-
-export const StrongTotal = styled.strong<CheckoutComponentProps>`
-&:not(article > strong) {
   display: flex;
   align-items: center;
   justify-content: space-between;
   &::after {
-    content: '${props => "R$ " + props.totalItens}';
+    content: '${(props) => 'R$ ' + props.totalItens}';
   }
-}
+`
+
+export const StrongTotal = styled.strong<CheckoutComponentProps>`
+  &:not(article > strong) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &::after {
+      content: '${(props) => 'R$ ' + props.totalItens}';
+    }
+  }
 `
