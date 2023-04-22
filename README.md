@@ -92,5 +92,5 @@ As seguintes tecnologias foram usadas na construção do projeto.
  </div>
 
 <h4 align="center">
-    🚧 PROJETO README 🚀 Este documento de README, está sendo construído! 🚧
+    🚧 PROJETO README 🚀 CONCLUÍDO ✅ 🚧
 </h4>
