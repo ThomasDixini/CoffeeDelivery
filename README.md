@@ -33,6 +33,18 @@ Por fim, a aplicação exibe o valor total da soma de itens no carrinho multipli
     
 # Demonstrações
 
+## Página Inicial
+![HomePage](https://user-images.githubusercontent.com/83423919/233793078-ad8ba3bc-52dc-4bce-989e-5f10d59321d0.gif)
+
+## Café Card
+![Coffee](https://user-images.githubusercontent.com/83423919/233793086-c3f1daab-d599-483e-8e90-2ea5cfbe93e2.gif)
+
+## Cabeçalho
+![Header](https://user-images.githubusercontent.com/83423919/233793093-bd8d8cc0-9ab1-4827-92af-6b83c656fd60.gif)
+
+## Página do carrinho
+![Checkout](https://user-images.githubusercontent.com/83423919/233793099-db028770-2e68-4df3-8967-d8a54782046e.gif)
+
 <br> 
 
 # Instalação
