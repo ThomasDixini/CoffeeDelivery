@@ -30,8 +30,7 @@ Por fim, a aplicação exibe o valor total da soma de itens no carrinho multipli
     [x] Formulário para o usuário preencher o seu endereço
     [x] Exibir o total de itens no carrinho no Header
     [x] Exibir o valor total da soma de itens no carrinho multiplicados pelo valor
-    [ ] LocalStorage
-    [x] ContextAPI
+    
 # Demonstrações
 
 <br> 
